@@ -1,29 +1,25 @@
 package com.alexbarna.rest.service.user;
 
 import com.alexbarna.rest.api.user.UserRequest;
-import com.alexbarna.rest.exception.UserNotFoundException;
+import com.alexbarna.rest.dao.UserDao;
 import com.alexbarna.rest.repository.user.UserEntity;
 import com.alexbarna.rest.service.AbstractCrudService;
-import com.alexbarna.rest.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class UserService extends AbstractCrudService<UserDto,UserRequest,UserEntity,Long> {
+public class UserService extends AbstractCrudService<UserDto,UserRequest,UserDao> {
 
     @Autowired
-    public UserService(CrudRepository<UserEntity, Long> repository) {
-        super(repository);
+    public UserService(final UserDao dao) {
+        super(dao);
     }
 
     @Override
     public UserDto getById(Long id) {
-        Optional<UserEntity> userEntity = repository.findById(id);
-        return null;
+        UserEntity userEntity = dao.findById(id);
+        //TODO map entity to dto
+        return new UserDto();
     }
 
     @Override
@@ -32,13 +28,12 @@ public class UserService extends AbstractCrudService<UserDto,UserRequest,UserEnt
     }
 
     @Override
-    public UserDto deleteById(Long id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-        }
-        else{
-            throw new UserNotFoundException();
-        }
-        return null;
+    public void deleteById(Long id) {
+        dao.deleteById(id);
+    }
+
+    public UserDto getCurrentUser() {
+        //TODO get user :)
+        return new UserDto();
     }
 }

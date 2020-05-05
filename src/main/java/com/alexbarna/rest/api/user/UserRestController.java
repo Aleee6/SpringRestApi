@@ -1,32 +1,37 @@
 package com.alexbarna.rest.api.user;
 
-import com.alexbarna.rest.service.CrudService;
 import com.alexbarna.rest.service.user.UserDto;
+import com.alexbarna.rest.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserRestController {
-    private final CrudService<UserDto, UserRequest> service;
+    private final UserService service;
 
     @Autowired
-    public UserRestController(final CrudService<UserDto, UserRequest> service) {
+    public UserRestController(final UserService service) {
         this.service = service;
     }
 
+    @GetMapping("/user")
+    public UserDto getCurrentUser(){
+        return service.getCurrentUser();
+    }
+
+    @PostMapping("/user")
+    public UserDto createUser(UserRequest request){
+        return service.createFromRequest(request);
+    }
 
     @GetMapping("/user/{id}")
     public UserDto getUser(@PathVariable Long id){
         return service.getById(id);
     }
 
-    @PostMapping
-    public UserDto createUser(UserRequest request){
-        return service.createFromRequest(request);
-    }
-
     @DeleteMapping("/user/{id}")
-    public UserDto deleteUser(@PathVariable Long id){
-        return service.deleteById(id);
+    public String deleteUser(@PathVariable Long id){
+        service.deleteById(id);
+        return "";
     }
 }

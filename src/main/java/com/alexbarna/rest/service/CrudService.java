@@ -5,6 +5,6 @@ public interface CrudService<T,S> {
 
     T createFromRequest(S request);
 
-    T deleteById(Long id);
+    void deleteById(Long id);
 
 }

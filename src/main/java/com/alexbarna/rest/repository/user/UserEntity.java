@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
@@ -14,10 +15,10 @@ public class UserEntity {
     private String address;
     private String created;
     @Column(name = "created_at")
-    private String createdAt;
+    private Date createdAt;
     private String deleted;
     @Column(name = "deleted_at")
-    private String deletedAt;
+    private Date deletedAt;
     @Column(name = "deleted_flag")
     private String deletedFlag;
     private String email;
@@ -27,31 +28,31 @@ public class UserEntity {
     private String lastLogin;
     private String name;
     @Column(name = "next_login_change_pwd")
-    private String nextLoginChangePwd;
+    private Boolean nextLoginChangePwd;
     private String password;
     @Column(name = "password_expired")
-    private String passwordExpired;
+    private Boolean passwordExpired;
     private String phone;
     @Column(name = "settlement_id")
     private String settlementId;
     @Column(name = "temp_password")
     private String tempPassword;
     @Column(name = "temp_password_expired")
-    private String tempPasswordExpired;
+    private Boolean tempPasswordExpired;
     private String updated;
     @Column(name = "updated_at")
-    private String updatedAt;
+    private Date updatedAt;
     @Column(name = "user_type")
     private String userType;
     private String username;
     @Column(name = "settlements_by_settlement_id")
     private String settlementsBySettlementId;
     @Column(name = "user_by_created_id")
-    private String userByCreatedId;
+    private Long userByCreatedId;
     @Column(name = "user_by_deleted_id")
-    private String userByDeletedId;
+    private Long userByDeletedId;
     @Column(name = "user_by_updated_id")
-    private String userByUpdatedId;
+    private Long userByUpdatedId;
 
     public UserEntity() {
     }
@@ -88,11 +89,11 @@ public class UserEntity {
         this.created = created;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -104,11 +105,11 @@ public class UserEntity {
         this.deleted = deleted;
     }
 
-    public String getDeletedAt() {
+    public Date getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(String deletedAt) {
+    public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -152,11 +153,11 @@ public class UserEntity {
         this.name = name;
     }
 
-    public String getNextLoginChangePwd() {
+    public Boolean getNextLoginChangePwd() {
         return nextLoginChangePwd;
     }
 
-    public void setNextLoginChangePwd(String nextLoginChangePwd) {
+    public void setNextLoginChangePwd(Boolean nextLoginChangePwd) {
         this.nextLoginChangePwd = nextLoginChangePwd;
     }
 
@@ -168,11 +169,11 @@ public class UserEntity {
         this.password = password;
     }
 
-    public String getPasswordExpired() {
+    public Boolean getPasswordExpired() {
         return passwordExpired;
     }
 
-    public void setPasswordExpired(String passwordExpired) {
+    public void setPasswordExpired(Boolean passwordExpired) {
         this.passwordExpired = passwordExpired;
     }
 
@@ -200,11 +201,11 @@ public class UserEntity {
         this.tempPassword = tempPassword;
     }
 
-    public String getTempPasswordExpired() {
+    public Boolean getTempPasswordExpired() {
         return tempPasswordExpired;
     }
 
-    public void setTempPasswordExpired(String tempPasswordExpired) {
+    public void setTempPasswordExpired(Boolean tempPasswordExpired) {
         this.tempPasswordExpired = tempPasswordExpired;
     }
 
@@ -216,11 +217,11 @@ public class UserEntity {
         this.updated = updated;
     }
 
-    public String getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -248,27 +249,27 @@ public class UserEntity {
         this.settlementsBySettlementId = settlementsBySettlementId;
     }
 
-    public String getUserByCreatedId() {
+    public Long getUserByCreatedId() {
         return userByCreatedId;
     }
 
-    public void setUserByCreatedId(String userByCreatedId) {
+    public void setUserByCreatedId(Long userByCreatedId) {
         this.userByCreatedId = userByCreatedId;
     }
 
-    public String getUserByDeletedId() {
+    public Long getUserByDeletedId() {
         return userByDeletedId;
     }
 
-    public void setUserByDeletedId(String userByDeletedId) {
+    public void setUserByDeletedId(Long userByDeletedId) {
         this.userByDeletedId = userByDeletedId;
     }
 
-    public String getUserByUpdatedId() {
+    public Long getUserByUpdatedId() {
         return userByUpdatedId;
     }
 
-    public void setUserByUpdatedId(String userByUpdatedId) {
+    public void setUserByUpdatedId(Long userByUpdatedId) {
         this.userByUpdatedId = userByUpdatedId;
     }
 }
