@@ -1,13 +1,16 @@
 package com.alexbarna.rest.repository.role;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_roles")
 public class RoleEntity {
+    @Id
     private Long userId;
-    private String role;
+    private String roles;
 
     public RoleEntity() {
     }
@@ -20,11 +23,11 @@ public class RoleEntity {
         this.userId = userId;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }
