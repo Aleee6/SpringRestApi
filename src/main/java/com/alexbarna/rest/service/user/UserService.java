@@ -11,19 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService extends AbstractCrudService<UserDto, UserRequest, UserDao> {
 
-    private final ModelMapper mapper;
-
     @Autowired
     public UserService(final UserDao dao, final ModelMapper mapper) {
-        super(dao);
-        this.mapper = mapper;
+        super(dao, mapper);
     }
 
     @Override
     public UserDto getById(Long id) {
-        UserEntity userEntity = dao.findById(id);
-        //TODO map entity to dto
-        return mapper.map(userEntity, UserDto.class);
+        return mapper.map(dao.findById(id), UserDto.class);
     }
 
     @Override
