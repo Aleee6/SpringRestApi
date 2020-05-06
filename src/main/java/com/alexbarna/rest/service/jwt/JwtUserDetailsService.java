@@ -1,4 +1,4 @@
-package com.alexbarna.rest.configuration;
+package com.alexbarna.rest.service.jwt;
 
 import com.alexbarna.rest.dao.UserDao;
 import com.alexbarna.rest.repository.user.UserEntity;
@@ -28,17 +28,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserEntity> userEntity = userDao.findByName(username);
-        if (userEntity.isPresent()) {
-            UserEntity user = userEntity.get();
-            List<GrantedAuthority> roles = Arrays.stream(user.getRole().getRoles().split(","))
-                    .map(SimpleGrantedAuthority::new)
-                    .collect(Collectors.toList());
-            return new User(user.getUsername(), user.getPassword(),
-                    roles);
-        } else {
-            throw new UsernameNotFoundException("User not found with username: " + username);
-        }
+        UserEntity user = userDao.findByName(username);
+        List<GrantedAuthority> roles = Arrays.stream(user.getRole().getRoles().split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+        return new User(user.getUsername(), user.getPassword(), roles);
     }
 
 }

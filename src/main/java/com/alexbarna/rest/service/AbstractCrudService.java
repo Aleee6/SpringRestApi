@@ -2,7 +2,7 @@ package com.alexbarna.rest.service;
 
 import org.modelmapper.ModelMapper;
 
-public abstract class AbstractCrudService<T, D> implements CrudService<T> {
+public abstract class AbstractCrudService<T, R, D> implements CrudService<T, R> {
     protected final D dao;
     protected final ModelMapper mapper;
 

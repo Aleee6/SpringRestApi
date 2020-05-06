@@ -1,9 +1,9 @@
 package com.alexbarna.rest.service;
 
-public interface CrudService<T> {
+public interface CrudService<T, R> {
     T getById(Long id);
 
-    T createFromRequest(T request);
+    T createFromRequest(R request);
 
     void deleteById(Long id);
 

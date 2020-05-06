@@ -1,6 +1,6 @@
 package com.alexbarna.rest.api.auth;
 
-import com.alexbarna.rest.service.JwtTokenService;
+import com.alexbarna.rest.service.jwt.JwtTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

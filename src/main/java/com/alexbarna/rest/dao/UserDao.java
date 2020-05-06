@@ -35,7 +35,7 @@ public class UserDao {
         return repository.save(userEntity);
     }
 
-    public Optional<UserEntity> findByName(String username) {
-        return repository.findByUsername(username);
+    public UserEntity findByName(String username) {
+        return repository.findByUsername(username).orElseThrow(UserNotFoundException::new);
     }
 }

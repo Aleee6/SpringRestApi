@@ -1,11 +1,10 @@
-package com.alexbarna.rest.service;
+package com.alexbarna.rest.service.jwt;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import com.alexbarna.rest.api.auth.AuthenticationRequest;
-import com.alexbarna.rest.configuration.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
