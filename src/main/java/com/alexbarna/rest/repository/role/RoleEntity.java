@@ -1,26 +1,38 @@
 package com.alexbarna.rest.repository.role;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.alexbarna.rest.repository.user.UserEntity;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user_roles")
 public class RoleEntity {
+
     @Id
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
     private String roles;
 
     public RoleEntity() {
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public String getRoles() {

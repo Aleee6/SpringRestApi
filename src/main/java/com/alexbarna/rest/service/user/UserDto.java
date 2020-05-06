@@ -1,5 +1,7 @@
 package com.alexbarna.rest.service.user;
 
+import com.alexbarna.rest.service.role.RoleDto;
+
 import java.util.Date;
 
 public class UserDto {
@@ -30,6 +32,7 @@ public class UserDto {
     private Long userByCreatedId;
     private Long userByDeletedId;
     private Long userByUpdatedId;
+    private RoleDto role;
 
     public Long getId() {
         return id;
@@ -245,5 +248,13 @@ public class UserDto {
 
     public void setUserByUpdatedId(Long userByUpdatedId) {
         this.userByUpdatedId = userByUpdatedId;
+    }
+
+    public RoleDto getRole() {
+        return role;
+    }
+
+    public void setRole(RoleDto role) {
+        this.role = role;
     }
 }

@@ -1,5 +1,7 @@
 package com.alexbarna.rest.repository.user;
 
+import com.alexbarna.rest.repository.role.RoleEntity;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -51,6 +53,8 @@ public class UserEntity {
     private Long userByDeletedId;
     @Column(name = "user_by_updated_id")
     private Long userByUpdatedId;
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    private RoleEntity role;
 
     public UserEntity() {
     }
@@ -269,5 +273,13 @@ public class UserEntity {
 
     public void setUserByUpdatedId(Long userByUpdatedId) {
         this.userByUpdatedId = userByUpdatedId;
+    }
+
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
     }
 }
