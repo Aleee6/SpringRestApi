@@ -6,14 +6,18 @@ import com.alexbarna.rest.repository.user.UserEntity;
 import com.alexbarna.rest.service.AbstractCrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService extends AbstractCrudService<UserDto, UserDao> {
+    @Autowired
+    private final PasswordEncoder bcryptEncoder;
 
     @Autowired
-    public UserService(final UserDao dao, final ModelMapper mapper) {
+    public UserService(final UserDao dao, final ModelMapper mapper, final PasswordEncoder bcryptEncoder) {
         super(dao, mapper);
+        this.bcryptEncoder = bcryptEncoder;
     }
 
     @Override
@@ -23,6 +27,7 @@ public class UserService extends AbstractCrudService<UserDto, UserDao> {
 
     @Override
     public UserDto createFromRequest(UserDto request) {
+        request.setPassword(bcryptEncoder.encode(request.getPassword()));
         UserEntity savedUser = dao.save(mapper.map(request, UserEntity.class));
         return mapper.map(savedUser, UserDto.class);
     }
@@ -33,7 +38,6 @@ public class UserService extends AbstractCrudService<UserDto, UserDao> {
     }
 
     public UserDto getCurrentUser() {
-        //TODO get user :)
         return new UserDto();
     }
 }

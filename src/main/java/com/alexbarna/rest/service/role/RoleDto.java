@@ -1,9 +1,11 @@
 package com.alexbarna.rest.service.role;
 
 import com.alexbarna.rest.service.user.UserDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class RoleDto {
     private Long id;
+    @JsonIgnore
     private UserDto user;
     private String roles;
 

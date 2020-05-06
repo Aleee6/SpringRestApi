@@ -34,4 +34,8 @@ public class UserDao {
     public UserEntity save(UserEntity userEntity) {
         return repository.save(userEntity);
     }
+
+    public Optional<UserEntity> findByName(String username) {
+        return repository.findByUsername(username);
+    }
 }
