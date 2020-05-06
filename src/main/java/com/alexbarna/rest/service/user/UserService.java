@@ -2,14 +2,13 @@ package com.alexbarna.rest.service.user;
 
 import com.alexbarna.rest.api.user.UserRequest;
 import com.alexbarna.rest.dao.UserDao;
-import com.alexbarna.rest.repository.user.UserEntity;
 import com.alexbarna.rest.service.AbstractCrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService extends AbstractCrudService<UserDto, UserRequest, UserDao> {
+public class UserService extends AbstractCrudService<UserDto, UserDao> {
 
     @Autowired
     public UserService(final UserDao dao, final ModelMapper mapper) {
@@ -22,7 +21,7 @@ public class UserService extends AbstractCrudService<UserDto, UserRequest, UserD
     }
 
     @Override
-    public UserDto createFromRequest(UserRequest request) {
+    public UserDto createFromRequest(UserDto request) {
         return null;
     }
 

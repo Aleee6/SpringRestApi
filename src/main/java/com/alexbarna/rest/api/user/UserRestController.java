@@ -22,7 +22,7 @@ public class UserRestController {
 
     @PostMapping("/user")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public UserDto createUser(UserRequest request){
+    public UserDto createUser(UserDto request){
         return service.createFromRequest(request);
     }
 
