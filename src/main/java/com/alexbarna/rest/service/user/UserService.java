@@ -2,6 +2,7 @@ package com.alexbarna.rest.service.user;
 
 import com.alexbarna.rest.api.user.UserRequest;
 import com.alexbarna.rest.dao.UserDao;
+import com.alexbarna.rest.repository.user.UserEntity;
 import com.alexbarna.rest.service.AbstractCrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ public class UserService extends AbstractCrudService<UserDto, UserDao> {
 
     @Override
     public UserDto createFromRequest(UserDto request) {
-        return null;
+        UserEntity savedUser = dao.save(mapper.map(request, UserEntity.class));
+        return mapper.map(savedUser, UserDto.class);
     }
 
     @Override

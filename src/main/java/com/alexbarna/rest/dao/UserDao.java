@@ -30,4 +30,8 @@ public class UserDao {
             throw new UserNotFoundException();
         }
     }
+
+    public UserEntity save(UserEntity userEntity) {
+        return repository.save(userEntity);
+    }
 }
